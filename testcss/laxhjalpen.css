@@ -1,0 +1,454 @@
+@charset "UTF-8";
+/*
+==================================================================================
+Global rules
+==================================================================================
+*/
+html {
+    maergin: 2%;
+}
+body {
+    margin: asauto;
+    max-width: 860px;
+    font-family: "Helvetica Neue", "Liberation Sans", Calibri, Arial, sans-serif;
+    font-size: 100%;
+}
+/*
+section, header, footer, nav, div[role=main] {
+    outline: 1px solid red;
+}
+*/
+/*
+==================================================================================
+Rules for reusable components
+==================================================================================
+*/
+/* Check usage */
+.dborder {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+/*
+==================================================================================
+Page header, all pages
+==================================================================================
+*/
+header {
+    text-align: center;
+}
+.startpage .logo {
+    /* Original 261 x 220 */
+    width: 235px;
+    height: 198px;
+}
+.hwrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.hwrap > a {
+    margin-right: 30px;
+}
+h1 {
+    font-family: 'Merienda One', cursive;
+}
+h1::first-letter {
+    color: #00AF64;
+}
+.startpage h1 {
+    font-size: 500%;
+}
+.tagline {
+    font-size: 120%;
+    padding: 0.5em;
+    border-top: 3px double #00AF64;
+    border-bottom: 3px double #00AF64;
+    margin: 1em 0;
+}
+/*
+==================================================================================
+Page footer rules
+==================================================================================
+*/
+footer {
+    margin-top: 2em;
+    text-align: center;
+    color: #999;
+}
+/*
+==================================================================================
+Main site navigation
+==================================================================================
+*/
+.menu > li,
+.menu > h2 {
+    margin: 0 0 1em;
+    padding: 2em 0;
+    background-color: #F5F5F5; /* Mycket ljus grå */
+    text-align: center;
+    box-shadow: inset 0 0 20px #007241;
+    border-radius: 50%;
+    font-family: 'Merienda One', cursive;
+}
+.menu a {
+    display: block;
+}
+.menu {
+    margin: 1em 0;
+    padding: 0;
+}
+.menu li {
+    margin: 0 0 1rem;
+    list-style: none;
+}
+.menu a:link,
+.menu a:visited {
+    text-decoration: none;
+    color: #000;
+}
+.menu a:focus,
+.menu a:hover {
+    text-decoration: underline;
+    color: #A62F00;
+}
+.menu a:active {
+    text-decoration: underline;
+    color: #FF4900;
+}
+/*
+==================================================================================
+Start page rules
+==================================================================================
+*/
+body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+       -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+body > header,
+body > footer {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+}
+.startpage section {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 22%;
+    flex: 0 0 22%;
+}
+/*
+==================================================================================
+Subpages
+==================================================================================
+*/
+.subpage .hwrap > a,
+nav {
+    margin-right: 10px;
+    flex: 0 1 20%;
+    min-width: 146px;
+    /* outline: 1px solid; */
+}
+.subpage .logo {
+    width: 146px;
+    height: 123px;
+    /* outline: 1px solid; */
+}
+.subpage .hwrap > h1,
+div[role=main] {
+    flex: 1 1 300px;
+}
+.subpage h1 {
+    font-size: 2.6rem;
+}
+h1 > span {
+    color: #a62f00;
+}
+.subpage .hwrap {
+    justify-content: space-between;
+}
+.subpage h2 {
+    text-align: center;
+}
+article {
+    padding-bottom: 1em; /* last p element contributes 1em */
+    margin-bottom: 2em;
+    border-bottom: 3px double #00af64;
+}
+article:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+figure {
+    float: left;
+    margin: 0;
+}
+figure img {
+    width: 128px;
+    height: 128px;
+}
+figcaption {
+    font: italic bolder 110% sans-serif;
+    font-family: inherit; /* Restore after shorthand*/
+    text-align: center;
+    text-transform: uppercase;
+    color: #666;
+}
+article p {
+    margin-left: 140px;
+    hyphens: auto;
+}
+/*
+==================================================================================
+Tables
+==================================================================================
+*/
+table {
+    border-spacing: 0;
+    border: 1px solid #d3d3d3;
+    /*! background: #fff; */
+    width: 96%;
+    margin: 1em auto 2em;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+thead {
+    font-size: 150%;
+    text-shadow: #fff 1px 1px 1px;
+}
+th, td {
+    padding: 1.1rem 1.8rem 1.1rem;
+}
+th {
+    padding-top: 1.4rem;
+    background: #ddd;
+    text-align: left;
+}
+th:not(:last-child) {
+    border-right: 1px solid #f2f2f2;
+}
+td {
+    border-top: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    /* Inte runtom, eftersom vi inte vill ha dubbel bredd */
+}
+tr:target {
+    background-color: #61d7a4;
+}
+tr:hover {
+    background-color: #ff9b73;
+}
+tr {
+    transition: background-color 2s;
+}
+
+
+/*
+==================================================================================
+Nivo Slider
+==================================================================================
+*/
+.nivo-caption {
+    text-align: center;
+}
+
+/*
+==================================================================================
+Forms (contact page)
+==================================================================================
+*/
+fieldset {
+    padding: 1em;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+legend {
+    font-size: larger;
+}
+form p {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+label {
+    flex: 0 1 10ch;
+    text-align: right;
+    padding-right: 1ch;
+}
+.reqfield {
+    flex: 0 0 2ch; /* Upphäv när PHP lämnar felmmeddelanden */
+    order: 1; /* Upphäv när wrapping sker */
+    text-align: center;
+    padding-right: 0;
+}
+input[type=text],
+input[type=email],
+textarea {
+    flex: 1 1 25ch;
+    max-width: 300px;
+}
+textarea {
+    height: 5em;
+    resize: vertical;
+}
+input[type="submit"] {
+    display: block;
+    margin: auto;
+}
+
+/*
+==================================================================================
+Blog page, show and edit
+==================================================================================
+*/
+
+/*
+==================================================================================
+Adaptive design
+==================================================================================
+*/
+.tagline button {
+    display: none;
+}
+@media (max-width: 750px) {
+    .hwrap > a {
+        margin-right: 25px;
+    }
+    .startpage .logo {
+        width: 209px;
+        height: 176px;
+    }
+    .startpage > header h1 {
+        font-size: 400%;
+    }
+    p.tagline  {
+        font-size: 110%;
+    }
+    .startpage section {
+        flex: 0 0 44%;
+    }
+}
+@media (max-width: 650px) {
+    .hwrap > a {
+        margin-right: 20px;
+    }
+    .startpage .logo {
+        width: 183px;
+        height: 154px;
+    }
+    .startpage > header h1 {
+        font-size: 350%;
+    }
+    p.tagline  {
+        font-size: 105%;
+    }
+}
+@media (max-width: 550px) {
+    .hwrap > a {
+        margin-right: 15px;
+    }
+    .startpage .logo {
+        width: 157px;
+        height: 132px;
+    }
+    .startpage > header h1 {
+        font-size: 350%;
+    }
+    p.tagline  {
+        font-size: 105%;
+    }
+    /* Sub pages */
+    .subpage .logo {
+        width: 116px;
+        height: 98px;
+    }
+    .subpage h1 {
+        font-size: 2.1rem;
+    }
+    /* 1 column layout  */
+    nav,
+    div[role=main] {
+        flex: 0 0 100%;
+        margin: 0;
+    }
+    .subpage .tagline {
+        margin: 0.5em 0 0.2em;
+        text-align: right;
+    }
+    /* Toggle menu */
+    .tagline button {
+        display: inline;
+    }
+    .menu > li {
+        margin: 0 0 0.2em;
+        padding: 0.4em 0;
+        box-shadow: inset 0 0 10px #007241;
+        border-radius: 1em;
+    }
+    .subpage .menu {
+        margin: 0 0.1em;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s;
+    }
+    .menu.show {
+        max-height: 165px;
+        /* Slightly larger than it will ever be */
+    }
+}
+/* 475 px was a breakpoint for flex design on subpages */
+@media (max-width: 476px) {
+    .subpage .hwrap a {
+        flex: 0 0 100%;
+    }
+    .hwrap h1 {
+        margin: 0.1em;
+    }
+}
+@media (max-width: 380px) {
+    .startpage > header h1 {
+        font-size: 300%;
+    }
+    .startpage section {
+        flex: 0 0 100%;
+    }
+    figure {
+        float: none;
+        text-align: center;
+    }
+    figcaption {
+        width: 116px;
+        margin: auto;
+    }
+    article p {
+        margin-left: 0;
+    }
+    /* Form */
+    label {
+        flex: 0 0 auto;
+        text-align: left;
+        padding-right: 0;
+    }
+    .reqfield {
+        order: 0;
+    }
+    input[type=text],
+    input[type=email],
+    textarea {
+        flex: 0 0 100%;
+        margin-top: 3px;
+    }
+}
