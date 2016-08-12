@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var cssvalidate = require('gulp-w3c-css');
+var htmlvalidate = require("gulp-html-validator");
 var gutil = require('gulp-util');
 var map = require('map-stream');
 
@@ -24,3 +25,51 @@ gulp.task('cssvalid', function () {
       done(null, file);
     }));
 });
+
+gulp.task("htmlvalid", () =>
+    gulp.src("testhtml/*")
+    .pipe(htmlvalidate())
+    .pipe(map(function(file, done) {
+        var messages = JSON.parse(file.contents.toString()).messages;
+        if (messages.length === 0) {
+            gutil.log("Success: " + file.path);
+            gutil.log(gutil.colors.green("Inga problem funna\n"));
+        } else {
+            gutil.log("Problem upptäckta i " + file.path + "\n");
+            for ( var msg of messages ) {
+                gutil.log("Fil: " + file.path);
+                if ( msg.firstLine ) {
+                    gutil.log("Rader: " + msg.firstLine + " till " + msg.lastLine);
+                } else {
+                    gutil.log("Rad: " + msg.lastLine);
+                    if ( msg.firstColumn != null ) {
+                        gutil.log("Kolumner " + msg.firstColumn + " till " + msg.lastColumn);
+                    } else {
+                        gutil.log("Kolumn: " + msg.lastColumn);
+                    }
+                }
+                if ( msg.type === "error" ) {
+                    gutil.log(gutil.colors.red("Error: " + msg.message));
+                } else if ( msg.type === "info" ) {
+                    gutil.log(gutil.colors.gray("Info: " + msg.message));
+                } else {
+                    gutil.log(gutil.colors.yellow(msg.type + ": " + msg.message));
+                }
+                if ( msg.extract ) {
+                    gutil.log(msg.extract.substring(0, msg.hiliteStart-1).trim() +
+                        gutil.colors.yellow.bold(msg.extract.substr(msg.hiliteStart, msg.hiliteLength).trim()) +
+                        msg.extract.substring(msg.hiliteStart + msg.hiliteLength).trim());
+                }
+                gutil.log("\n");
+
+            }
+        }
+        gutil.log("------------------------------\n");
+        done(null, file);
+    }))
+);
+
+gulp.task('watch', function() {
+    gulp.watch('testhtml', ['htmlvalid']);
+    gulp.watch('testcss', ['cssvalid']);
+})

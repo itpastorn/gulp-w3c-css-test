@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/itpastorn/gulp-w3c-css-test/issues"
   },
-  "homepage": "https://github.com/itpastorn/gulp-w3c-css-test#readme"
+  "homepage": "https://github.com/itpastorn/gulp-w3c-css-test#readme",
+  "devDependencies": {
+    "gulp-html-validator": "0.0.5"
+  }
 }
