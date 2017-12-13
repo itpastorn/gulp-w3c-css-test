@@ -69,7 +69,7 @@ gulp.task("htmlvalid", () =>
     }))
 );
 
-gulp.task('watch', function() {
+gulp.task('watch', () => {
     gulp.watch('testhtml', ['htmlvalid']);
     gulp.watch('testcss', ['cssvalid']);
 })
